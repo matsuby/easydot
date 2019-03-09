@@ -1,6 +1,6 @@
 {
   "name": "easydot",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "dot-string access for target object",
   "main": "dist/easydot.js",
   "module": "src/index.js",
