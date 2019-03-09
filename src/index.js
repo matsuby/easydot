@@ -8,7 +8,12 @@
 export default (target, safeOverJump = false) => {
   return new Proxy(target, {
     get(target, property) {
-      return _get(target, property, safeOverJump)
+      if (typeof property === "symbol") {
+        // to prevent errors in Node.js: `console.log(proxy);`
+        return target;
+      } else {
+        return _get(target, property, safeOverJump);
+      }
     },
     set(target, property, value) {
       return _set(target, property, value, safeOverJump);

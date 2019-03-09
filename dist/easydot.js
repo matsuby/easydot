@@ -17,7 +17,12 @@
     var safeOverJump = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     return new Proxy(target, {
       get: function get(target, property) {
-        return _get(target, property, safeOverJump);
+        if (_typeof(property) === "symbol") {
+          // to prevent errors in Node.js: `console.log(proxy);`
+          return target;
+        } else {
+          return _get(target, property, safeOverJump);
+        }
       },
       set: function set(target, property, value) {
         return _set(target, property, value, safeOverJump);
