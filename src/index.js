@@ -1,8 +1,8 @@
 /**
  * Wrapper function to implement `dot-string acccess` for target object
  *
- * @param {Object} implements target
- * @param {boolean} [safeOverJump=false] if true, over jump access
+ * @param {Object} target
+ * @param {boolean} [safeOverJump=false] if true, over jump access allow
  * @return {Proxy} implemented object
  */
 export default (target, safeOverJump = false) => {
@@ -11,7 +11,7 @@ export default (target, safeOverJump = false) => {
       return _get(target, property, safeOverJump)
     },
     set(target, property, value) {
-      _set(target, property, value, safeOverJump);
+      return _set(target, property, value, safeOverJump);
     },
   });
 
@@ -21,11 +21,17 @@ export default (target, safeOverJump = false) => {
     let tmp = target;
     keys.forEach(key => {
       if (safeOverJump && typeof tmp !== "object" || tmp === null) {
-        return undefined;
+        // pass
+      } else {
+        tmp = tmp[key];
       }
-      tmp = tmp[key];
     });
-    return tmp[lastKey];
+
+    if (safeOverJump && !tmp) {
+      return undefined;
+    } else {
+      return tmp[lastKey];
+    }
   }
 
   function _set(target, property, value, safeOverJump) {
@@ -39,5 +45,6 @@ export default (target, safeOverJump = false) => {
       tmp = tmp[key];
     });
     tmp[lastKey] = value;
+    return true;
   }
 }

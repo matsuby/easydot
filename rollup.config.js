@@ -1,32 +1,34 @@
 import babel from "rollup-plugin-babel";
 import { uglify } from "rollup-plugin-uglify";
+import * as meta from "./package.json"
 
 export default [
   {
-    input: "src/easydot.js",
+    input: meta.module,
     output: {
-      file: "dist/easydot.bundle.js",
-      name: "easydot",
+      file: meta.main,
+      name: meta.name,
       format: "umd",
     },
     plugins: [
       babel({
         exclude: "node_modules/**",
-        presets: ['@babel/preset-env'],
+        presets: ["@babel/preset-env"],
+        externalHelpers: true,
       }),
     ],
   },
   {
-    input: "src/easydot.js",
+    input: meta.module,
     output: {
-      file: "dist/easydot.bundle.min.js",
-      name: "easydot",
+      file: meta.main.replace(".js", ".min.js"),
+      name: meta.name,
       format: "umd",
     },
     plugins: [
       babel({
         exclude: "node_modules/**",
-        presets: ['@babel/preset-env'],
+        presets: ["@babel/preset-env"],
       }),
       uglify(),
     ],

@@ -1,20 +1,23 @@
 {
   "name": "easydot",
-  "version": "0.0.1",
-  "description": "Wrapper to Implement `dot-string access` for target object",
-  "main": "src/easydot.js",
+  "version": "1.0.0",
+  "description": "dot-string access for target object",
+  "main": "dist/easydot.js",
+  "module": "src/index.js",
   "repository": "git@github.com:matsuby/easydot.git",
   "author": "Matsubara Kohei <matsubygh@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
+    "ava": "^1.3.1",
     "rollup": "^1.4.1",
     "rollup-plugin-babel": "^4.3.2"
   },
   "scripts": {
-    "build": "$(npm bin)/rollup -c"
+    "pretest": "rollup -c",
+    "test": "ava -v"
   },
   "dependencies": {
     "rollup-plugin-uglify": "^6.0.2"
