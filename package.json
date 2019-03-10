@@ -1,7 +1,16 @@
 {
   "name": "easydot",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "dot-string access for target object",
+  "keywords": [
+    "nested",
+    "property",
+    "dot-string",
+    "access",
+    "get",
+    "set",
+    "proxy"
+  ],
   "main": "dist/easydot.js",
   "module": "src/index.js",
   "repository": "git@github.com:matsuby/easydot.git",
