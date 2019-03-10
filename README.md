@@ -1,7 +1,8 @@
 # easydot
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
-"dot-string access" for target object
+easydot provides "dot-string access" for target object.
+e.g) `console.log(easydot({a:{b:{c:42}}})["a.b.c"]); // => 42`
 
 ## Installing
 
@@ -23,7 +24,7 @@ and
 
 ```
 // Use ES Modules
-import easydot from "easydot"
+import easydot from "easydot";
 
 // Use Common JS
 const easydot = require("easydot");
