@@ -1,6 +1,6 @@
 {
   "name": "easydot",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "dot-string access for target object",
   "keywords": [
     "nested",
@@ -27,7 +27,7 @@
   "scripts": {
     "pretest": "rollup -c",
     "test": "ava -v",
-    "postpublish": "echo \"$(sleep 3 && git push origin $(git tag | tail -1))\""
+    "postpublish": "echo \"$(sleep 3 && git push origin $(git tag | tail -1))\" &"
   },
   "dependencies": {
     "rollup-plugin-uglify": "^6.0.2"
