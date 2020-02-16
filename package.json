@@ -1,6 +1,6 @@
 {
   "name": "easydot",
-  "version": "1.0.13",
+  "version": "1.1.0",
   "description": "dot-string access for target object",
   "keywords": [
     "nested",
