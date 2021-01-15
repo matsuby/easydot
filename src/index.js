@@ -44,6 +44,9 @@ export default (target, safeOverJump = false) => {
     const lastKey = keys.pop();
     let tmp = target;
     keys.forEach(key => {
+      if (tmp[key] == '__proto__' || tmp[key] == 'prototype' || tmp[key] == 'constructor') {
+        return;
+      }
       if (safeOverJump && typeof tmp[key] === "undefined" || tmp[key] === null) {
         tmp[key] = {};
       }
